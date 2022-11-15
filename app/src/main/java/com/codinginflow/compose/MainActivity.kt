@@ -8,6 +8,7 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.*
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.codinginflow.compose.blur.BlurScreen
 import com.codinginflow.compose.bottom_navigation.BottomNavMainScreen
 import com.codinginflow.compose.color_picker.ColorPicker
 import com.codinginflow.compose.color_picker.ImageColorPicker
@@ -83,6 +84,8 @@ class MainActivity : ComponentActivity() {
                 ImageColorPicker()
 
                 PhotoPicker()
+
+                BlurScreen()
             }
         }
     }

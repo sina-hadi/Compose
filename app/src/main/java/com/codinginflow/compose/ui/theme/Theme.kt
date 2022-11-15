@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 
 private val DarkColorPalette = darkColorScheme(
     primary = Purple200,
@@ -53,9 +54,11 @@ fun ComposeTheme(
     }
     val view = LocalView.current
     if (!view.isInEditMode) {
+        val currentWindow = (view.context as? Activity)?.window
+            ?: throw Exception("Not in an activity - unable to get Window reference")
         SideEffect {
-            (view.context as Activity).window.statusBarColor = colorScheme.primary.toArgb()
-            ViewCompat.getWindowInsetsController(view)?.isAppearanceLightStatusBars = darkTheme
+            currentWindow.statusBarColor = colorScheme.primary.toArgb()
+            WindowCompat.getInsetsController(currentWindow, view).isAppearanceLightStatusBars = darkTheme
         }
     }
 
